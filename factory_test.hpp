@@ -11,6 +11,7 @@ TEST(FactoryTest, MultSubTest) {
 	Factory * factory = new Factory();
 	char *equation[] = {"calculator","6*3+2"};
 	Base * result = factory->parse(2, equation);
+	EXPECT_EQ(result->stringify(), "6.000000 * 3.000000 + 2.000000");
 	EXPECT_EQ(result->evaluate(), 20); // expect value = 20
     
 
@@ -36,6 +37,7 @@ TEST(FactoryTest, PowDivTest) {
         Factory * factory = new Factory();
         char *equation[] = {"calculator","2**3/2"};
         Base * result = factory->parse(2, equation);
+	EXPECT_EQ(result->stringify(), "2.000000 ^ 3.000000 / 2.000000");
         EXPECT_EQ(result->evaluate(), 4); 
 
 
@@ -49,6 +51,7 @@ TEST(FactoryTest, AdditionTest) {
         Factory * factory = new Factory();
         char *equation[] = {"calculator","9+9+9"};
         Base * result = factory->parse(2, equation);
+	EXPECT_EQ(result->stringify(), "9.000000 + 9.000000 + 9.000000");
         EXPECT_EQ(result->evaluate(), 27);
 
 
@@ -86,6 +89,7 @@ TEST(FactoryTest, AllOperationsTest) {
         Factory * factory = new Factory();
         char *equation[] = {"calculator","1**2*4/2*8+10-4"};
         Base * result = factory->parse(2, equation);
+	EXPECT_EQ(result->stringify(), "1.000000 ^ 2.000000 * 4.000000 / 2.000000 * 8.000000 + 10.000000 - 4.000000");
         EXPECT_EQ(result->evaluate(), 22); 
 
 
@@ -100,6 +104,7 @@ TEST(FactoryTest,NegativeTest) {
         Factory * factory = new Factory();
         char *equation[] = {"calculator","6*2-14"};
         Base * result = factory->parse(2, equation);
+	EXPECT_EQ(result->stringify(), "6.000000 * 2.000000 - 14.000000");
         EXPECT_EQ(result->evaluate(), -2); 
 
 
@@ -113,6 +118,7 @@ TEST(FactoryTest,ZeroTest) {
         Factory * factory = new Factory();
         char *equation[] = {"calculator","7**2-49"};
         Base * result = factory->parse(2, equation);
+	EXPECT_EQ(result->stringify(),  "7.000000 ^ 2.000000 - 49.000000");
         EXPECT_EQ(result->evaluate(), 0);
 
 
